@@ -1,10 +1,11 @@
 
 //DOMS
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('question')
+var answerButtonsElement = document.getElementById('answer-buttons')
+var highscore = document.getElementById('highscore') 
 var score = 0
 let shuffledQuestions, currentQuestionIndex
 
@@ -41,14 +42,15 @@ function showQuestion(question) {
   })
 }
 //Adding score fuction
-function addScore() {
-  if(answer.correct = 'correct'){
+/*function addScore() {
+  if(button.dataset.correct = answer.correct){
     alert("Correct!"), score++
   }
   else{
     alert("Wrong!")
+    timeLeft - 10;
   }
-}
+} */
 
 
 function resetState() {
@@ -74,31 +76,43 @@ function selectAnswer(e) {
     alert("your score is " +score+ " out of 6")
     
   }
+  
+  if (correct){
+    alert("Correct!")
+    score++
+  }
+  else{
+    alert("Wrong!")
+    timeLeft -10
+  }
+
 }
 
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
-    element.classList.add('correct')
+    element.classList.add('Correct!')
+    
   } else {
-    element.classList.add('wrong')
+    element.classList.add('Wrong')
+    
   }
 }
 
 
-//Clear and return to normal
+//Clear Status and return 
 function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
-//Questions in quiz
+//Questions for quiz
 const questions = [
   {
     question: 'Which of the following cant be done with client-side JavaScript?',
     answers: [
       { text: 'Storing the forms contents to a database file on the server', correct: true },
       { text: 'Validating a form', correct: false },
-      { text: 'sending a forms content by email', correct: false},
+      { text: 'Sending a forms content by email', correct: false},
       {text: 'None of the above', correct: false}
     ]
     
@@ -107,10 +121,10 @@ const questions = [
   {
     question: 'Which of the following are capabilities of functions in JavaScript?',
     answers: [
-      { text: 'return a value', correct: false },
+      { text: 'Return a value', correct: false },
       { text: 'Accept parameters and return a value', correct: false},
-      { text: 'accept parameters', correct: true },
-      { text: 'all of the above', correct: false }
+      { text: 'Accept parameters', correct: true },
+      { text: 'All of the above', correct: false }
     ]
   },
   {
@@ -137,7 +151,7 @@ const questions = [
     question: 'What is the correct JavaScript syntax to write "Hello World"?',
     answers: [
       { text: 'System.out.println("Hello World")', correct: false },
-      { text: 'println ("Hello World")', correct: false },
+      { text: 'Println ("Hello World")', correct: false },
       { text: 'document.write("Hello World")', correct: true },
       { text: 'response.write("Hello World")', correct: false }
     ]
@@ -174,4 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+//Save score in local storage
+
+var highscore = JSON.parse(localStorage.getItem("score")) || [];
 

@@ -1,20 +1,16 @@
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: Gotham Rounded;
+    
   }
   p{
       position: absolute ;
       top: 150px
       
   }
-  :root {
-    --hue-neutral: 200;
-    --hue-wrong: 0;
-    --hue-correct: 145;
-  }
+  
   
   body {
-    --hue: var(--hue-neutral);
+    
     padding: 0;
     margin: 0;
     display: flex;
@@ -22,7 +18,7 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    b
+    background-color: whitesmoke;
   }
   
   
@@ -32,6 +28,7 @@
     background-color: white;
     border-radius: 5px;
     padding: 10px;
+    
     
   }
   
@@ -77,4 +74,11 @@
     position: absolute;
     top: 125px;
     
+  }
+
+  h2{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+
   }
